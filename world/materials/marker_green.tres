@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[ext_resource path="res://shaders/building_marker.tres" type="Shader" id=1]
+
+[resource]
+render_priority = 1
+shader = ExtResource( 1 )
+shader_param/Tint = Color( 0.262745, 1, 0, 1 )
+shader_param/InnerRadius = 0.15
+shader_param/Thickness = 0.15

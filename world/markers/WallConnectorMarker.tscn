@@ -1,0 +1,15 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scripts/building/GridMarker.gd" type="Script" id=1]
+[ext_resource path="res://world/materials/marker_blue.tres" type="Material" id=2]
+[ext_resource path="res://world/materials/marker_green.tres" type="Material" id=3]
+
+[sub_resource type="PlaneMesh" id=8]
+
+[node name="WallConnectorMarker" type="MeshInstance"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.015, 4 )
+cast_shadow = 0
+mesh = SubResource( 8 )
+material/0 = ExtResource( 3 )
+script = ExtResource( 1 )
+active_material = ExtResource( 2 )

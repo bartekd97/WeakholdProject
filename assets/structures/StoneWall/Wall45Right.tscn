@@ -1,0 +1,65 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://assets/structures/StoneWall/data/StoneWall.material" type="Material" id=1]
+[ext_resource path="res://assets/structures/StoneWall/data/Segment45_Right.mesh" type="ArrayMesh" id=2]
+[ext_resource path="res://scripts/structures/StructureBuildingMaterializer.gd" type="Script" id=3]
+[ext_resource path="res://scripts/structures/WallElementBase.gd" type="Script" id=4]
+[ext_resource path="res://world/materials/structure_preview_green.tres" type="Material" id=5]
+[ext_resource path="res://world/materials/structure_preview_red.tres" type="Material" id=6]
+
+[sub_resource type="BoxShape" id=6]
+extents = Vector3( 0.8, 2, 1.1 )
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 1, 2, 0.601069 )
+
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 1.9, 2, 0.531 )
+
+[sub_resource type="BoxShape" id=7]
+extents = Vector3( 0.72, 2, 1 )
+
+[sub_resource type="BoxShape" id=5]
+extents = Vector3( 1, 2, 0.907194 )
+
+[node name="Wall45Right" type="Spatial"]
+script = ExtResource( 4 )
+connector_positions = PoolVector3Array( 2, 0, 2, -2, 0, 0 )
+
+[node name="Visual" type="MeshInstance" parent="."]
+mesh = ExtResource( 2 )
+material/0 = ExtResource( 1 )
+script = ExtResource( 3 )
+green_material = ExtResource( 5 )
+red_material = ExtResource( 6 )
+
+[node name="DetectionArea" type="Area" parent="."]
+input_ray_pickable = false
+monitorable = false
+collision_layer = 0
+collision_mask = 64
+
+[node name="CollisionShape" type="CollisionShape" parent="DetectionArea"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 2, 0 )
+shape = SubResource( 6 )
+
+[node name="CollisionShape3" type="CollisionShape" parent="DetectionArea"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.558342, 2, -0.47089 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="DetectionArea"]
+transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0.495064, 2, 0.636485 )
+shape = SubResource( 3 )
+
+[node name="CollisionBody" type="StaticBody" parent="."]
+collision_layer = 65
+
+[node name="CollisionShape" type="CollisionShape" parent="CollisionBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.28146, 2, 0 )
+shape = SubResource( 7 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="CollisionBody"]
+transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0.360424, 2, 0.360424 )
+shape = SubResource( 5 )
+[connection signal="build" from="." to="Visual" method="_on__build"]
+[connection signal="mark_preview_availability" from="." to="Visual" method="_on_mark_preview_availability"]

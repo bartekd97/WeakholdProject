@@ -1,0 +1,50 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="StyleBoxFlat" id=1]
+content_margin_left = 0.0
+bg_color = Color( 0.6, 0.6, 0.6, 0.12549 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+
+[node name="UI" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="."]
+anchor_left = 0.200977
+anchor_top = 0.796667
+anchor_right = 0.800977
+anchor_bottom = 0.996667
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="Panel"]
+margin_left = 50.0
+margin_top = 40.9406
+margin_right = 153.0
+margin_bottom = 74.9406
+focus_mode = 0
+toggle_mode = true
+action_mode = 0
+enabled_focus_mode = 0
+text = "Build Wall"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel2" type="Panel" parent="."]
+margin_left = 200.0
+margin_top = 118.321
+margin_right = 625.0
+margin_bottom = 318.321
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
